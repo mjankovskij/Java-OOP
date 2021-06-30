@@ -1,5 +1,8 @@
 package lt.codeacademy;
 
 public class Main {
-  System.out.println("abs");
+
+    public Main() {
+        System.out.println("asd");
+    }
 }
