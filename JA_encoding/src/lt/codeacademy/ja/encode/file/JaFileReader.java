@@ -56,4 +56,20 @@ public class JaFileReader {
             System.out.println("Cannot parse " + e.getMessage());
         }
     }
+
+//    public List<String> readText(String fileName) {
+//        List<String> text = new ArrayList<>();
+//        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                String[] arr = line.split("");
+//                for(String ch: arr){
+//                    text.add(ch);
+//                }
+//            }
+//        } catch (IOException e) {
+//            System.out.println("Cannot read file " + fileName + e.getMessage());
+//        }
+//        return text;
+//    }
 }

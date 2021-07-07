@@ -19,11 +19,27 @@ public record JaEncodeService(Map<Integer, String> encodeMap) {
     }
 
     public String decode(List<Integer> codes) {
-        return codes.stream().map(this::decodeLetter).collect(Collectors.joining());
+        return codes.stream().map(this::decodeKey).collect(Collectors.joining());
     }
 
-    public String decodeLetter(int key) {
+    public String decodeKey(int key) {
         String str = isExist(key) ? encodeMap.get(key) : "";
         return str.equals("tarpas") ? " " : str;
     }
+
+    public String encode(List<String> text) {
+        return text.stream()
+                .mapToInt(this::encodeLetter).mapToObj(s -> s + " ")
+                .collect(Collectors.joining());
+    }
+
+    public int encodeLetter(String ch) {
+        return encodeMap.entrySet().stream().filter(entry -> entry
+                .getValue()
+                .equals(ch))
+                .findFirst()
+                .map(Map.Entry::getKey)
+                .orElse(0);
+    }
+
 }

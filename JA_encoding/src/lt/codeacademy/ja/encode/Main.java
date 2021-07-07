@@ -1,6 +1,7 @@
 package lt.codeacademy.ja.encode;
 
 import lt.codeacademy.ja.encode.file.JaFileReader;
+import lt.codeacademy.ja.encode.input.JaInput;
 import lt.codeacademy.ja.encode.service.JaEncodeService;
 
 import java.util.List;
@@ -18,6 +19,11 @@ public class Main {
 
         List<Integer> codes = reader.readLetter("uzkoduota.txt");
 
-        System.out.println(service.decode(codes));
+        JaInput jaInput = new JaInput();
+        List<String> text = jaInput.inputTextAsList();
+
+        System.out.println(text);
+
+        System.out.println(service.encode(text));
     }
 }
