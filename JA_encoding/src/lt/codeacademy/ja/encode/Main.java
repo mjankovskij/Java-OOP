@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+
     public static void main(String[] args) {
         JaFileReader reader = new JaFileReader();
         Map<Integer, String> map = reader.read();
@@ -15,6 +16,8 @@ public class Main {
         List<Integer> letters = reader.readLetter("antanui.txt");
         service.checkEncode(letters);
 
-        System.out.println(letters);
+        List<Integer> codes = reader.readLetter("uzkoduota.txt");
+
+        System.out.println(service.decode(codes));
     }
 }
