@@ -17,4 +17,12 @@ public class JaFileWriter {
         }
     }
 
+    public void write(String fileName, String str) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+            bw.write(str);
+        } catch (IOException e) {
+            System.out.println("Cannot write to file " + e.getMessage());
+        }
+    }
+
 }

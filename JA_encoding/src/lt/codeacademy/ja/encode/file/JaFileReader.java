@@ -25,7 +25,7 @@ public class JaFileReader {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Cannot read file " + JA_FILENAME + e.getMessage());
+            System.out.println("Cannot read file " + e.getMessage());
         }
         return encodes;
     }

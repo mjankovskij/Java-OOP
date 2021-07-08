@@ -1,6 +1,7 @@
 package lt.codeacademy.ja.encode;
 
 import lt.codeacademy.ja.encode.file.JaFileReader;
+import lt.codeacademy.ja.encode.file.JaFileWriter;
 import lt.codeacademy.ja.encode.input.JaInput;
 import lt.codeacademy.ja.encode.service.JaEncodeService;
 
@@ -14,16 +15,25 @@ public class Main {
         Map<Integer, String> map = reader.read();
         JaEncodeService service = new JaEncodeService(map);
 
-        List<Integer> letters = reader.readLetter("antanui.txt");
-        service.checkEncode(letters);
+//        List<Integer> letters = reader.readLetter("antanui.txt");
+//        service.checkEncode(letters);
 
-        List<Integer> codes = reader.readLetter("uzkoduota.txt");
+//        List<Integer> codes = reader.readLetter("uzkoduota.txt");
 
-        JaInput jaInput = new JaInput();
-        List<String> text = jaInput.inputTextAsList();
 
-        System.out.println(text);
 
-        System.out.println(service.encode(text));
+        if(args[0].equals("send")){
+            JaInput jaInput = new JaInput();
+            List<String> text = jaInput.inputTextAsList();
+            JaFileWriter writer = new JaFileWriter();
+            writer.write("atkoduota.txt", text.toString());
+            writer.write("uzkoduota.txt", service.encode(text));
+        }else if (args[0].equals("read")){
+            List<Integer> letters = reader.readLetter("uzkoduota.txt");
+            service.checkEncode(letters);
+            List<Integer> codes = reader.readLetter("uzkoduota.txt");
+            System.out.println(service.decode(codes));
+        }
+
     }
 }
